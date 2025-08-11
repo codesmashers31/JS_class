@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array methods</title>
+</head>
+<body>
+<h1>Array Methods</h1>    
+ 
+
+
+<script>
+    let a = ["first value","next value",30];
+    // console.log('total array',a);
+    
+    // // Push() - Add element from end. and return a new array
+    // a.push(5)
+
+    // console.log('Push',a);
+    // //pop() - Remove element from end. and return a new array
+    // a.pop()
+    // console.log('pop',a);
+    // //shift() - remove element from start, and return a new array.
+    // a.shift()
+    // console.log('shift',a);
+    // //unshift() - Add element from start, and return a new array.
+    // // a.unshift(20)
+    // // console.log('shift',a);
+    // // includes - check if values is there or not - return a boolean value - true or false.
+    // console.log('includes',a.includes(4));
+    //indexof - to get the index values from array - it return a index value. 
+    //  console.log('Index of', a.indexOf(30));
+
+    //slice - copy portion of array - doesn't change original array.
+     let arr = [1,2,3,4,6,8,10,56,56,85,89,56];
+      
+     console.log('original array',arr)
+     
+     let sliced = arr.slice(5,10) //8,10
+
+     console.log(sliced);
+
+      //splice - add/remove modify your original array.
+       
+      let sp = [2,5,6,8,9,10,52];
+      console.log(sp)
+       
+      sp.splice(2,2)
+
+      console.log(sp)
+    
+
+    // combain array into sring  
+    let jon = [1,2,3,4,5];
+    console.log(jon.join("/"))
+    
+    
+    let res = ["2,3,4,5,6,7,8"]
+    res.reverse();
+    console.log(res);
+   
+    
+    let arrsortt = [30,1,10,56,58,40,96,78,100]
+    
+    arrsortt.sort();
+    console.log('sort', arrsortt);
+    
+    let newsort = arrsortt.sort((a,b)=>a-b);
+    console.log('new sort', newsort);
+
+   let first =[1,2,3] 
+   let second = [4,5,6]
+
+   let marge = first.concat(second)
+    console.log(marge);
+
+
+
+    // isArray() to find this is array or not
+    console.log(Array);
+    console.log(Array.isArray());
+    
+    
+    console.log(Array.isArray(1));
+
+
+   
+
+    
+</script>
+</body>
+</html>
