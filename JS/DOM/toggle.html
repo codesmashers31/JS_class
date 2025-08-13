@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle</title>
+</head>
+<body>
+
+
+
+<button id="show">Toggle</button>
+<p id="para"  style="border: 1px solid black;width: 300px; padding: 20px;display: none;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae doloribus c
+    um quidem ab quisquam amet recusandae voluptatibus
+    
+     Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas voluptatum esse cumque nemo, veritatis quibusdam nostrum illo deserunt ratione id. Esse molestias labore architecto quas deserunt illum atque alias sit.commodi, ratione asperiores.</p>
+    
+
+
+
+
+
+
+
+ <script>
+    let clickToggle = document.getElementById("show");
+
+    clickToggle.addEventListener("click",()=>{
+     
+        let paratext = document.getElementById("para");
+           
+        
+        if(paratext.style.display === "none"){
+            paratext.style.display = "block"
+        }else{
+            paratext.style.display = "none";
+        }
+
+
+
+
+    })
+ </script>    
+</body>
+</html>

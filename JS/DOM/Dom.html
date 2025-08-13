@@ -20,6 +20,9 @@
     <script>
 
 //   Root Object = document
+
+
+
 //   console.log(document);
   //DOM Selectors
 //   getElementById()
@@ -33,6 +36,7 @@
 
 // .innerHTML  Set&Get//Tags&text
 // .innerText  //Set&Get - textonly(No tags)
+// .textContent
 // .style //csschange
 //.value //form validate & data to get and set
 // .src - change images
@@ -79,9 +83,10 @@ console.log('this is buttn', btn);
 
 btn.addEventListener("click",()=>{
 
-head.innerText = "Hello";
+head.innerText = "Finish";
 head.style.backgroundColor = "red";
 
+btn.innerText = "Click Me more"
 
 });
 
@@ -100,3 +105,5 @@ console.log(head);
 
 </body>
 </html>
+
+

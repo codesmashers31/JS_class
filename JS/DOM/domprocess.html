@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Process</title>
+
+<style>
+
+    .parent{
+        display: grid;
+        place-items: center;
+        height: 100vh;
+    }
+    .box{
+        width: 200px;
+        height: 200px;
+        padding: 20px;
+        background-color: red;
+        color: white;
+    }
+</style>
+</head>
+<body>
+<div class="parent"> 
+<div class="box">
+This is box
+</div>
+</div>   
+<p id="title">This is content</p>
+
+<button id="hide">Hide</button>
+
+<button id="show">Show</button>
+
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded",()=>{
+    
+      const titleName = document.getElementById("title");
+      const btnHide = document.getElementById("hide"); 
+      console.log(btnHide);
+      
+      const btnShow = document.getElementById("show"); 
+      const parent_class = document.getElementsByClassName("parent")
+
+      console.log(parent_class);
+      
+       
+      
+     btnHide.addEventListener("click",()=>{
+
+        // alert('this is btton click');
+
+       titleName.style.display = "none";
+        parent_class[0].style.display ="none";
+
+      })  
+
+       btnShow.addEventListener("click",()=>{
+
+        // alert('this is btton click');
+
+       titleName.style.display = "block";
+        parent_class[0].style.display ="block";
+
+      })
+    
+
+
+
+
+    })
+
+
+
+
+
+
+
+
+
+</script>    
+</body>
+</html>
