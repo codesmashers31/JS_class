@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+     <style>
+    body { 
+        font-family: Arial; 
+        padding: 20px; 
+    }
+    input {
+         display:block; width: 250px; margin:10px 0; padding:8px; 
+        }
+    button { 
+        padding:10px; background:green; color:white; border:none; cursor:pointer; 
+    }
+    .error { 
+        color:red; 
+    }
+  </style>
+</head>
+<body>
+    <!-- form making -->
+   <form id="loginform">
+      <input type="text" id="email" placeholder="Enter your Email">
+      <input type="password" id="password" placeholder="enter your Password">
+      <button type="submit" id="btn">Login</button>
+      <p id="error" class="error"></p>
+   </form>
+
+
+
+   <script>
+    //  // Click Process
+      document.getElementById("loginform").addEventListener("submit",(b)=>{
+        // Reload prevent
+      b.preventDefault();
+    //   selector to selet the input
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+    //  error showing
+     let error = document.getElementById("error");
+// identify
+     error.textContent = "";
+// contision check
+    if(!email || !password ){
+
+        error.textContent = "Please enter the vlaues";
+        return;
+
+    }
+
+
+    // to take the value form localstroage
+    let stroageuser = localStorage.getItem("user")
+    // Json String change to json or js object
+    let objstroage = JSON.parse(stroageuser);
+
+    //console.log(objstroage);
+    
+// validation for checking correct password and email
+    if(email===objstroage.fullemail && password === objstroage.fullpassword){
+     
+        alert("Login succfully done" + " " + objstroage.fullname)
+
+        localStorage.setItem("isLoggedin", "true");
+        
+
+        window.location.href = "home.html"
+
+
+    }else{
+        error.textContent ="Invalid user name and password"
+    }
+
+      })
+   </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+    body { 
+        font-family: Arial; 
+        padding: 20px; 
+    }
+    input {
+         display:block; width: 250px; margin:10px 0; padding:8px; 
+        }
+    button { 
+        padding:10px; background:green; color:white; border:none; cursor:pointer; 
+    }
+    .error { 
+        color:red; 
+    }
+  </style>
+</head>
+<body>
+
+<form id="registerForm">
+    <input type="text" id="name" placeholder="Enter your Full name">
+    <input type="email" id="email" placeholder="Enter your Email">
+    <input type="password" id="password" placeholder="Enter your password">
+    <input type="password" id="confirm_pass"  placeholder="Enter your confirm Password">
+    <button type="submit" id="btn">Register</button>
+    <p id="error" class="error"></p>
+</form>
+
+<script>
+    // Click Process
+document.getElementById("registerForm").addEventListener('submit',(event)=>{
+    // Reload prevent
+    event.preventDefault();
+    // Selector to select the values in the input feilds and button & error msg
+    let fullname = document.getElementById("name").value;
+    let fullemail = document.getElementById("email").value;
+    let fullpassword = document.getElementById("password").value;
+    let fullconfirm_pass = document.getElementById("confirm_pass").value;
+    let fullerror =  document.getElementById("error");
+    //  Error msg identify
+    fullerror.textContent = "";
+    //condition for check empty inputs
+    if(!fullname || !fullemail || !fullpassword || !fullconfirm_pass){
+        
+        fullerror.textContent = "All field are required";
+
+        return;
+
+    }
+   //check email verification
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fullemail)){
+        fullerror.textContent = "Invalid email!";
+        return;
+
+    }
+//    password check character
+    if(fullpassword.length < 6){
+         fullerror.textContent = "Password must be more then 6 chracters";
+        return;
+    }
+
+    // password and confirm password need to same check
+
+    if(fullpassword !== fullconfirm_pass){
+           
+        fullerror.textContent = "Password Should be same a your password";
+        return;
+    }
+
+
+// strore the values in to the local stroage
+
+let users = {fullname,fullemail,fullpassword}
+
+let userstring = JSON.stringify(users)
+
+localStorage.setItem("user",userstring)
+
+alert("Thanks for your Register");
+
+//location.reload();
+
+window.location.href = "login.html"
+
+})
+</script>
+</body>
+</html>
