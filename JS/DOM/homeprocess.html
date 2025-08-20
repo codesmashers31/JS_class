@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register and Showing the datas</title>
+    <style>
+    body { 
+        font-family: Arial; 
+        padding: 20px; 
+    }
+    input {
+         display:block; width: 250px; margin:10px 0; padding:8px; 
+        }
+    button { 
+        padding:10px; background:green; color:white; border:none; cursor:pointer; 
+    }
+    .error { 
+        color:red; 
+    }
+  </style>
+</head>
+<body>
+
+<form id="register">
+
+<label>Name</label>
+<br>
+<input type="text" id="namedata"><br>
+<label>Mobile</label>
+<br>
+<input type="text" id="mobiledata"><br>
+<label>Password</label>
+<br>
+<input type="password" id="password"><br>
+<label>Address</label>
+<br>
+<input type="text" id="address"><br>
+
+<button type="submit" id="btn">Register</button>
+
+<p id="error"></p>
+
+</form>    
+
+
+
+<section>
+    <table border="2" id="userfulldata">
+        <thead>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Password</th>
+        <th>Address</th>
+</thead>
+        <tbody>
+     
+        </tbody>
+    </table>
+</section>
+
+
+<script>
+    // trigger a Function using add event leasner
+    document.getElementById("register").addEventListener("submit",(e)=>{
+        // prevent the reload process
+        e.preventDefault();
+        // Take the values form the inputs
+         const nameValue =  document.getElementById("namedata").value;
+         const mobileValue =  document.getElementById("mobiledata").value;
+         const passwordValue =  document.getElementById("password").value;
+         const addressValue =  document.getElementById("address").value;
+        //error handling
+         const errorhandling = document.getElementById("error");
+        //  set the error content
+        errorhandling.textContent = "";
+
+        // Validation
+        // if conditions
+
+
+        // data ready process
+
+        const userdata = [{nameValue:nameValue,mobileValue:mobileValue,passwordValue:passwordValue,addressValue:addressValue}];
+        // Local storage process
+        // Stringify process for local stroage
+        const userstring = JSON.stringify(userdata) 
+
+        // local stroage to add the datas
+
+        localStorage.setItem("userdatas",userstring);
+        alert("Register succfully done");
+        // window.location.href = "home.html"
+        showdata();
+
+         
+    })
+
+
+   const showdata = ()=>{
+    // Take the value
+    const userdatasnew = localStorage.getItem("userdatas");
+    // Parse the value
+    const objuserdatasnew = JSON.parse(userdatasnew);
+    // 
+
+    const tbody = document.querySelector("#userfulldata tbody");
+
+
+     tbody.innerHTML = "";
+     
+
+     objuserdatasnew.forEach(objuserdata=>{
+    
+        const row =`<tr><td>${objuserdata.nameValue}</td><td>${objuserdata.mobileValue}</td><td>${objuserdata.passwordValue}</td><td>${objuserdata.addressValue}</td></tr>`
+
+tbody.innerHTML +=row;
+
+     });
+
+
+
+
+    }
+
+
+  
+
+
+   window.onload = showdata;
+
+
+</script>
+
+</body>
+</html>
