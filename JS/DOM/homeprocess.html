@@ -1,120 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register and Showing the datas</title>
     <style>
-    body { 
-        font-family: Arial; 
-        padding: 20px; 
-    }
-    input {
-         display:block; width: 250px; margin:10px 0; padding:8px; 
+        body {
+            font-family: Arial;
+            padding: 20px;
         }
-    button { 
-        padding:10px; background:green; color:white; border:none; cursor:pointer; 
-    }
-    .error { 
-        color:red; 
-    }
-  </style>
+
+        input {
+            display: block;
+            width: 250px;
+            margin: 10px 0;
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
 </head>
+
 <body>
 
-<form id="register">
+    <form id="register">
 
-<label>Name</label>
-<br>
-<input type="text" id="namedata"><br>
-<label>Mobile</label>
-<br>
+        <label>Name</label>
+        <br>
+        <input type="text" id="namedata"><br>
+        <label>Mobile</label>
+        <br>
+        <input type="text" id="mobile"><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" />
+        <br />
+        <label for="address">Address</label>
+        <br />
+        <input type="text" id="address">
+        <button type="submit" id="btn">Register</button>
 
-<input type="text" id="mobile"><br>
+        <p id="error"></p>
 
-<button type="submit" id="btn">Register</button>
-
-<p id="error"></p>
-
-</form>    
-
-
-
-<section>
-    <table border="2" cellpadding="10" id="userfulldata">
-        <thead>
-        <th>Name</th>
-        <th>Mobile</th>
-        <th>Password</th>
-        <th>Address</th>
-</thead>
-        <tbody>
-     
-        </tbody>
-    </table>
-</section>
+    </form>
 
 
 
+    <section>
+        <table border="2" cellpadding="10" id="userfulldata">
+            <thead>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Password</th>
+                <th>Address</th>
+            </thead>
+            <tbody id="tbody">
 
-<script>
-    document.getElementById("register").addEventListener("submit",(e)=>{
-  
-      e.preventDefault();
-      const namedata_value =  document.getElementById("namedata").value;
-      const mobile_value =  document.getElementById("mobile").value;
-      const errorhandling = document.getElementById("error");
-
-
-      errorhandling.textContent = "";
-      
-      if(!namedata_value || !mobile_value){
-        errorhandling.textContent = "Please enter the values";
-        return;
-      }
-
-      const emp = JSON.parse(localStorage.getItem("employees")) || [];
-
-      //console.log('First time push',emp);
-      
-        
-
-      emp.push({name:namedata_value,mobile:mobile_value})
-
-     //console.log('after push',emp);
-
-     const newdata = localStorage.setItem("employees",JSON.stringify(emp));
-
-     //console.log('storated data',newdata.name);
-     
-
-     
-        const namedata_empty =  document.getElementById("namedata").value = "";
-        const mobile_value_empty =  document.getElementById("mobile").value = "";
-
-       showdata();
+            </tbody>
+        </table>
+    </section>
 
 
 
 
+    <script>
+        document.getElementById("register").addEventListener("submit", (e) => {
 
-    })
+            e.preventDefault();
+            const namedata_value = document.getElementById("namedata").value;
+            const mobile_value = document.getElementById("mobile").value;
+            const password_value = document.getElementById("password").value;
+            const address_value = document.getElementById("address").value;
+            const errorhandling = document.getElementById("error");
+
+            errorhandling.textContent = "";
+
+            if (!namedata_value || !mobile_value || !password_value || !address_value) {
+                errorhandling.textContent = "Please enter the values";
+                return;
+            }
+
+            const emp = JSON.parse(localStorage.getItem("employees")) || [];
+
+            //console.log('First time push',emp);
 
 
-const showdata = ()=>{
-    
-const datas = localStorage.getItem("employees");
+
+            emp.push({ name: namedata_value, mobile: mobile_value, password: password_value, address: address_value });
+
+            //console.log('after push',emp);
+
+            const newdata = localStorage.setItem("employees", JSON.stringify(emp));
+
+            //console.log('storated data',newdata.name);
 
 
 
-    
-}
+            const namedata_empty = document.getElementById("namedata").value = "";
+            const mobile_value_empty = document.getElementById("mobile").value = "";
+            const password_value_empty = document.getElementById("password").value = "";
+            const address_value_empty = document.getElementById("address").value = "";
+
+            showdata();
+
+        });
+
+
+        const showdata = () => {
+
+            const datas = localStorage.getItem("employees");
+            const employeesdata = JSON.parse(localStorage.getItem("employees"));
+            const tbody = document.getElementById("tbody");
+
+            tbody.innerHTML = "";
+
+            console.log(employeesdata);
+
+            employeesdata.forEach((user) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `<td>${user.name}</td>
+    <td>${user.mobile}</td>
+    <td>${user.password}</td>
+    <td>${user.address}</td>`;
+                tbody.append(tr);
+
+            });
+
+
+        }
+
+        showdata();
 
 
 
 
 
-</script>
+    </script>
 
 </body>
+
 </html>
