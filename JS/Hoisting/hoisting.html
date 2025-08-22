@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoisting</title>
+</head>
+<body>
+    
+<h1>What is Hoisting?</h1>
+
+<p>Scoping - when you decrare a variable/function/or classes
+    when you decalre only after the initialized. you print a statement before decalare or initialized. 
+    the variable decalaretion only move to the top of the scope.
+</p>
+
+<p>js engine first pass-la(Creation phase) , variable,function,classes, names memory rigester.. 
+    var get hoisted. and initialized to undefined.
+    let also hoisted but not initialized. TDZ (Temproral dead zone).
+    Const  also hoisted but not initialized. TDZ (Temproral dead zone).
+
+    function delecteion fully hosited. no issues.(Definition Ready)
+
+    but in function expresss/arrow therir variables hosiing rules.
+
+    classes hoisted happen . but thats also TDZ.
+
+    so when you using the variable,funstion class should make the order.
+</p>
+
+
+
+
+
+
+
+
+
+<script>
+    //var a; JS engine return a undifiend
+    console.log(a);
+    
+    var a = 10;
+    //let b         - return referance error
+
+    // console.log(b);
+    // let b = 2;
+
+
+
+
+    //    function hoistedfunction (){
+
+    //     console.log('this is hosited');
+        
+    // }
+    hoistedfunction();
+
+    function hoistedfunction (){
+
+        console.log('this is hosited');
+        
+    }
+
+    //  newfunction();
+    // const newfunction  = function(){
+    //     console.log('Function expression  same rule in Variale declaration');
+    // }
+
+    arowfunction();
+    const arowfunction = ()=>{
+        console.log('Arrow function same rule in const  Variale declaration');
+        
+    }
+
+</script>
+
+</body>
+</html>
